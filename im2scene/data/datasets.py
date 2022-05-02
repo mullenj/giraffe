@@ -1,6 +1,7 @@
 import os
 import logging
 from torch.utils import data
+import data_humanact12_image as humanact12
 import numpy as np
 import glob
 from PIL import Image
@@ -120,8 +121,8 @@ class HumanAct12Class(data.Dataset):
             lambda x: x[:3, ::],
             transforms.Normalize((0.5, 0.5, .5), (0.5, 0.5, 0.5)),
         ])
-        dataset = data.VideoFolderDataset(dataset_folder, cache=os.path.join(dataset_folder, 'local.db'))
-        self.image_dataset = data.ImageDataset(dataset, image_transforms)
+        dataset = humanact12.VideoFolderDataset(dataset_folder, cache=os.path.join(dataset_folder, 'local.db'))
+        self.image_dataset = humanact12.ImageDataset(dataset, image_transforms)
 
     def __getitem__(self, idx):
         try:

@@ -144,7 +144,6 @@ def get_dataset(cfg, **kwargs):
                                  use_tanh_range=cfg['data']['use_tanh_range'],
                                  )
     elif dataset_name == 'humanact12':
-        print(img_size)
         dataset = data.HumanAct12Class(dataset_folder, size=img_size)
     else:
         dataset = data.ImagesDataset(
