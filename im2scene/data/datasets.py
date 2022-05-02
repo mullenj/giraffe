@@ -12,6 +12,7 @@ import io
 import random
 # fix for broken images
 from PIL import ImageFile
+import PIL
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 logger = logging.getLogger(__name__)
@@ -102,6 +103,40 @@ class LSUNClass(data.Dataset):
         return self.length
 
 
+class HumanAct12Class(data.Dataset):
+    ''' HumanAct12 Class Dataset Class.
+
+    Args:
+        dataset_folder (str): path to HumanAct12 dataset
+        size (int): image output size
+    '''
+
+    def __init__(self, dataset_folder,
+                 size=128):
+        image_transforms = transforms.Compose([
+            PIL.Image.fromarray,
+            transforms.Scale(int(size)),
+            transforms.ToTensor(),
+            lambda x: x[:3, ::],
+            transforms.Normalize((0.5, 0.5, .5), (0.5, 0.5, 0.5)),
+        ])
+        dataset = data.VideoFolderDataset(dataset_folder, cache=os.path.join(dataset_folder, 'local.db'))
+        self.image_dataset = data.ImageDataset(dataset, image_transforms)
+
+    def __getitem__(self, idx):
+        try:
+            data = self.image_dataset.__getitem__(idx)
+            return data
+
+        except Exception as e:
+            print(e)
+            idx = np.random.randint(self.length)
+            return self.__getitem__(idx)
+
+    def __len__(self):
+        return len(self.image_dataset)
+
+
 class ImagesDataset(data.Dataset):
     ''' Default Image Dataset Class.
 
@@ -114,7 +149,7 @@ class ImagesDataset(data.Dataset):
         use_tanh_range (bool): whether to rescale images to [-1, 1]
     '''
 
-    def __init__(self, dataset_folder,  size=64, celebA_center_crop=False,
+    def __init__(self, dataset_folder, size=64, celebA_center_crop=False,
                  random_crop=False, use_tanh_range=False):
 
         self.size = size

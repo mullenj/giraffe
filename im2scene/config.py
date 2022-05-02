@@ -143,6 +143,8 @@ def get_dataset(cfg, **kwargs):
                                  random_crop=cfg['data']['random_crop'],
                                  use_tanh_range=cfg['data']['use_tanh_range'],
                                  )
+    elif dataset_name == 'humanact12':
+        dataset = data.HumanAct12Class(dataset_folder, categories, size=img_size)
     else:
         dataset = data.ImagesDataset(
             dataset_folder, size=img_size,
