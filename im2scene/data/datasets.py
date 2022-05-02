@@ -1,7 +1,7 @@
 import os
 import logging
 from torch.utils import data
-import data_humanact12_image as humanact12
+from im2scene.data import data_humanact12_image as humanact12
 import numpy as np
 import glob
 from PIL import Image
