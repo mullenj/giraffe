@@ -157,6 +157,7 @@ while (True):
                                loss_val_best=metric_val_best)
 
         # Run validation
+        '''
         if validate_every > 0 and (it % validate_every) == 0 and (it > 0):
             print("Performing evaluation step.")
             eval_dict = trainer.evaluate()
@@ -173,6 +174,7 @@ while (True):
                 checkpoint_io.backup_model_best('model_best.pt')
                 checkpoint_io.save('model_best.pt', epoch_it=epoch_it, it=it,
                                    loss_val_best=metric_val_best)
+        '''
 
         # Exit if necessary
         if exit_after > 0 and (time.time() - t0) >= exit_after:
