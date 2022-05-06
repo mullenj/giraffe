@@ -1,19 +1,20 @@
 data:
   dataset_name: humanact12
-  path: /scratch/PHPSDataset/HumanAct12_128
+  path: /scratch/PHPSDataset/HumanAct12_256
   fid_file: /scratch/SyntheticData/humanact12128_inception_moments.npz
-  img_size: 128
+  img_size: 256
 model:
   background_generator_kwargs:
     rgb_out_dim: 256
   bounding_box_generator_kwargs:
-    scale_range_min: [0.2, 0.16, 0.16]
-    scale_range_max: [0.25, 0.2, 0.2]
-    translation_range_min: [-0.22, -0.12, 0.]
-    translation_range_max: [0.22, 0.12, 0.]
+    scale_range_min: [0.2, 0.2, 0.2]
+    scale_range_max: [0.3, 0.3, 0.3]
+    translation_range_min: [0, 0, 0.]
+    translation_range_max: [0, 0, 0.]
   generator_kwargs:
-    range_v: [0.41667, 0.5]
+    range_v: [0.5, 0.5]
     fov: 10
+    backround_rotation_range: [0., 0.25]
   neural_renderer_kwargs:
     input_dim: 256
     n_feat: 256
