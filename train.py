@@ -142,7 +142,7 @@ while (True):
             image_grid = trainer.visualize(it=it)
             if image_grid is not None:
                 logger.add_image('images', image_grid, it)
-                logger.add_image('input', batch['image'], it)
+                logger.add_image('input', batch['image'][0], it)
 
         # Save checkpoint
         if (checkpoint_every > 0 and (it % checkpoint_every) == 0):
