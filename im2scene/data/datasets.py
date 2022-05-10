@@ -115,6 +115,7 @@ class HumanAct12Class(data.Dataset):
     def __init__(self, dataset_folder,
                  size=256):
         image_transforms = transforms.Compose([
+            PIL.Image.fromarray,
             transforms.Scale(int(size)),
             transforms.ToTensor(),
             lambda x: x[:3, ::],
