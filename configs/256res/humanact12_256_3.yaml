@@ -12,7 +12,7 @@ model:
     translation_range_min: [0, 0, 0.]
     translation_range_max: [0, 0, 0.]
   generator_kwargs:
-    range_v: [0.5, 0.5]
+    range_v: [0.33333, 0.33333]
     fov: 10
   neural_renderer_kwargs:
     input_dim: 256
@@ -20,5 +20,5 @@ model:
   decoder_kwargs:
     rgb_out_dim: 256
 training:
-  out_dir:  /scratch1/out2
+  out_dir:  /scratch1/out5
   learning_rate: 0.00025

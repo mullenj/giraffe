@@ -34,7 +34,7 @@ class VideoFolderDataset(torch.utils.data.Dataset):
                 if len(os.listdir(vid_path)) >= min_len:
                     self.videos.append((vid_path, categ))
                     self.lengths.append(len(os.listdir(vid_path)))
-
+                '''
                 # Hack because I'm lazy
                 vid_path = os.path.join(dir, "view2")  # Do I want to use all views
                 categ = dir.split('/')[-2]
@@ -51,7 +51,9 @@ class VideoFolderDataset(torch.utils.data.Dataset):
                 if len(os.listdir(vid_path)) >= min_len:
                     self.videos.append((vid_path, categ))
                     self.lengths.append(len(os.listdir(vid_path)))
-
+                '''
+                if idx > 10:
+                    break
             if cache is not None:
                 with open(cache, 'wb') as f:
                     pickle.dump((self.videos, self.lengths), f)
