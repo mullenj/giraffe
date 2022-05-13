@@ -143,7 +143,7 @@ while (True):
             if image_grid is not None:
                 logger.add_image('images', image_grid, it)
                 logger.add_image('input', batch['image'][0], it)
-                np.save(f"{it}.npy", batch['image'][0])
+                np.save(f"/scratch/giraffe/{it}.npy", batch['image'][0])
 
         # Save checkpoint
         if (checkpoint_every > 0 and (it % checkpoint_every) == 0):
