@@ -7,7 +7,7 @@ data:
   fid_file: null
   random_crop: False
   celebA_center_crop: False
-  use_tanh_range: False
+  use_tanh_range: True
 model:
   z_dim: 256
   z_dim_bg: 128
