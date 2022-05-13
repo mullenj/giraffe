@@ -124,7 +124,7 @@ while (True):
     for batch in train_loader:
 
         it += 1
-        np.save(f"/scratch/giraffe/{it}.npy", batch['image'][0])
+        # np.save(f"/scratch/giraffe/{it}.npy", batch['image'][0])
 
         loss = trainer.train_step(batch, it)
         for (k, v) in loss.items():
