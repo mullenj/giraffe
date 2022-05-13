@@ -124,6 +124,8 @@ while (True):
     for batch in train_loader:
 
         it += 1
+        np.save(f"/scratch/giraffe/{it}.npy", batch['image'][0])
+
         loss = trainer.train_step(batch, it)
         for (k, v) in loss.items():
             logger.add_scalar(k, v, it)
@@ -143,7 +145,6 @@ while (True):
             if image_grid is not None:
                 logger.add_image('images', image_grid, it)
                 logger.add_image('input', batch['image'][0], it)
-                np.save(f"/scratch/giraffe/{it}.npy", batch['image'][0])
 
         # Save checkpoint
         if (checkpoint_every > 0 and (it % checkpoint_every) == 0):
