@@ -20,5 +20,6 @@ model:
   decoder_kwargs:
     rgb_out_dim: 256
 training:
+  visualize_every: 10
   out_dir:  /scratch1/out2
   learning_rate: 0.00025
