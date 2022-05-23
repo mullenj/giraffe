@@ -1,6 +1,6 @@
 data:
-  path: data/comprehensive_cars/images/*.jpg
-  fid_file: data/comprehensive_cars/fid_files/comprehensiveCars_256.npz
+  path: /scratch1/data/comprehensive_cars/images/*.jpg
+  fid_file: /scratch1/data/comprehensive_cars/fid_files/comprehensiveCars_256.npz
   random_crop: True
   img_size: 256
 model:
